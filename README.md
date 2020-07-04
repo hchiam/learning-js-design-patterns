@@ -1,5 +1,7 @@
 # My notes for the Udacity course: [JavaScript Design Patterns](https://classroom.udacity.com/courses/ud989)
 
+Just one of the things I'm learning. https://github.com/hchiam/learning
+
 ## Learning a new/unfamiliar codebase: 4 tips:
 
 1. Run app
