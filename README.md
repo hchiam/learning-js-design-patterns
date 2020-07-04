@@ -2,9 +2,26 @@
 
 Just one of the things I'm learning. https://github.com/hchiam/learning
 
-## Learning a new/unfamiliar codebase: 4 tips:
+## Learning a new/unfamiliar codebase: 5 tips:
 
-1. Run app
-2. Explore file structure -> find hints at code org
-3. See what JS files are loaded
-4. Find out what the libraries do (docs / code)
+Remember, seek a **top level** understanding while you do these:
+
+1. **Run** app -> find hints at behaviour
+2. Explore **file structure** -> find hints at code organization
+3. See what JS **files are loaded** -> find hints at dependencies = (where you might change something once to update multiple things)
+4. Find out what the **libraries** do (find the **docs** / code)
+5. Edit app to **see what breaks/changes**
+
+Think how to **change / break** the application. Example: change order of `<script>` tags.
+
+Leverage understanding of other frameworks to make educated guesses of how things are connected, and also check framework documentation to get more detail (but start from top level stuff).
+
+## BEFORE CONTRIBUTING AN EDIT: consider:
+
+**Type of change**: "cosmetic" or "profound"? how shown or how data is stored?
+
+**Where change**: view? template? etc. -> which folder? which file?
+
+**Similar/same exists**: related changes in same place?
+
+**Consistency** means you adjust to local conventions, but it helps you understand other parts of the code base more easily. So **"be tofu"** and absorb the local accent of the code dialect. Be a **"tofu detective"** to track down where a change should be made, and integrate seamlessly into the code that's already there.
