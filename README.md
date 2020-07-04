@@ -6,7 +6,7 @@ Just one of the things I'm learning. https://github.com/hchiam/learning
 
 Remember, seek a **top level** understanding while you do these:
 
-1. **Run** app -> find hints at behaviour
+1. **Run** app -> find hints at behaviour, but also see that the change works
 2. Explore **file structure** -> find hints at code organization
 3. See what JS **files are loaded** -> find hints at dependencies = (where you might change something once to update multiple things)
 4. Find out what the **libraries** do (find the **docs** / code)
@@ -22,6 +22,6 @@ Leverage understanding of other frameworks to make educated guesses of how thing
 
 **Where change**: view? template? etc. -> which folder? which file?
 
-**Similar/same exists**: related changes in same place?
+**Similar/same exists**: related code you can copy or reuse? put related changes in same place?
 
 **Consistency** means you adjust to local conventions, but it helps you understand other parts of the code base more easily. So **"be tofu"** and absorb the local accent of the code dialect. Be a **"tofu detective"** to track down where a change should be made, and integrate seamlessly into the code that's already there.
