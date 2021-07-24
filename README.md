@@ -1,8 +1,8 @@
 # My notes for the Udacity course: [JavaScript Design Patterns](https://classroom.udacity.com/courses/ud989)
 
-Just one of the things I'm learning. https://github.com/hchiam/learning
+Just one of the things I'm learning. <https://github.com/hchiam/learning>
 
-## Learning a new/unfamiliar codebase: 5 tips:
+## Learning a new/unfamiliar codebase: 5 tips
 
 Remember, seek a **top level** understanding while you do these:
 
@@ -16,7 +16,7 @@ Think how to **change / break** the application. Example: change order of `<scri
 
 Leverage understanding of other frameworks to make educated guesses of how things are connected, and also check framework documentation to get more detail (but start from top level stuff).
 
-## BEFORE CONTRIBUTING AN EDIT: consider:
+## BEFORE CONTRIBUTING AN EDIT: consider the following
 
 **Type of change**: "cosmetic" or "profound"? how shown or how data is stored?
 
