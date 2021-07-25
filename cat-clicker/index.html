@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cat Clicker</title>
+    <style>
+      body {
+        background: #333;
+        padding: 0;
+        margin: 0;
+      }
+      main {
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      div {
+        /* max-width: 25vw; */
+        /* flex: 1; */
+        display: grid;
+        place-items: center;
+      }
+      img {
+        width: 100%;
+        object-fit: cover;
+        box-sizing: border-box;
+        cursor: cell;
+        transition: opacity 0.25s, scale 0.25s;
+        background: white;
+      }
+      img:active {
+        opacity: 0.75;
+      }
+      img:hover {
+        scale: 1.1;
+      }
+      .count-container {
+        position: absolute;
+        background: rgba(227, 222, 222, 0.5);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        cursor: default;
+        text-shadow: -1px -1px white, 0px -1px white, 1px -1px white,
+          -1px 0px white, 1px 0px white, -1px 1px white, 0px 1px white,
+          1px 1px white;
+      }
+      .count {
+        width: 5ch;
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
+        text-align: center;
+        cursor: default;
+      }
+      .loading:before {
+        z-index: -1; /* in real usage, make this a high positive number */
+
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        top: calc(50% - 120px / 2); /* -1/2 of height */
+        left: calc(50% - 120px / 2); /* -1/2 of width */
+        box-sizing: border-box;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        box-shadow: 0 0 20px 0 #00000050, inset 0 0 20px 0 #00000050;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
+      }
+
+      /* Safari */
+      @-webkit-keyframes spin {
+        0% {
+          -webkit-transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="buttons"></section>
+    <main></main>
+    <script>
+      const cats = [
+        {
+          name: "Cat 1",
+          picture:
+            "https://lh3.ggpht.com/kixazxoJ2ufl3ACj2I85Xsy-Rfog97BM75ZiLaX02KgeYramAEqlEHqPC3rKqdQj4C1VFnXXryadFs1J9A=s0#w=640&h=496",
+          clicks: 0,
+          // photo cred: https://www.flickr.com/photos/chewie/2290467335
+        },
+        {
+          name: "2 Cats",
+          picture:
+            "https://lh5.ggpht.com/LfjkdmOKkGLvCt-VuRlWGjAjXqTBrPjRsokTNKBtCh8IFPRetGaXIpTQGE2e7ZCUaG2azKNkz38KkbM_emA=s0#w=640&h=454",
+          clicks: 2,
+          // photo cred: https://www.flickr.com/photos/jetske
+        },
+        {
+          name: "Cat 3",
+          picture:
+            "https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426",
+          clicks: 0,
+          // photo cred: https://www.flickr.com/photos/poplinre/625069434/in/photostream/
+        },
+        {
+          name: "Cat Anatomy",
+          picture:
+            "https://upload.wikimedia.org/wikipedia/commons/5/5a/Scheme_cat_anatomy.svg",
+          clicks: -1,
+        },
+        {
+          name: "Many Cats",
+          picture:
+            "https://upload.wikimedia.org/wikipedia/commons/0/0b/Cat_poster_1.jpg",
+          clicks: 0,
+        },
+      ];
+
+      // showCats(cats);
+      listCats(cats);
+
+      function listCats(cats) {
+        cats.forEach((cat) => {
+          const catName = cat.name ?? "Cat";
+
+          const button = document.createElement("button");
+          button.innerText = catName;
+
+          button.addEventListener("click", () => {
+            showCats([cat]);
+          });
+
+          document.body.querySelector("section.buttons").appendChild(button);
+        });
+      }
+
+      function showCats(catsArray) {
+        const main = document.body.getElementsByTagName("main")[0];
+        main.querySelectorAll(".cat").forEach((cat) => cat.remove());
+
+        main.classList.add("loading");
+
+        catsArray.forEach((cat, i) => {
+          const container = document.createElement("div");
+          container.classList.add("cat");
+
+          const catName = cat.name ?? "Cat";
+
+          const img = document.createElement("img");
+          img.src = cat.picture;
+          img.alt = `${catName}: click to increase the count`;
+          img.tabIndex = "0";
+          img.title = img.alt;
+          img.ariaLabel = img.alt;
+
+          img.addEventListener("click", () => {
+            const count =
+              img.nextElementSibling.getElementsByClassName("count")[0];
+            count.value = Number(count.value) + 1;
+            cats[i].clicks = count.value;
+          });
+
+          container.appendChild(img);
+          container.insertAdjacentHTML(
+            "beforeend",
+            `<p class="count-container">
+              ${catName} Click Count:
+              <input class="count" type="number" aria-label="count" value="${cat.clicks}" readonly />
+            </p>`
+          );
+
+          main.appendChild(container);
+        });
+
+        setTimeout(() => {
+          main.classList.remove("loading");
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>

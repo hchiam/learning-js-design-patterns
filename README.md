@@ -25,3 +25,7 @@ Leverage understanding of other frameworks to make educated guesses of how thing
 **Similar/same exists**: related code you can copy or reuse? put related changes in same place?
 
 **Consistency** means you adjust to local conventions, but it helps you understand other parts of the code base more easily. So **"be tofu"** and absorb the local accent of the code dialect. Be a **"tofu detective"** to track down where a change should be made, and integrate seamlessly into the code that's already there.
+
+## Requirements change all the time in response to improvements or new info
+
+That's why it's good to write organized and extensible code.
