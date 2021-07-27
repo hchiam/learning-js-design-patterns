@@ -89,7 +89,5 @@ function showCats(catsArray) {
     main.appendChild(container);
   });
 
-  setTimeout(() => {
-    main.classList.remove("loading");
-  }, 1000);
+  main.classList.remove("loading");
 }
