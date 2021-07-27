@@ -1,4 +1,10 @@
 const Model = {
+  init: function () {
+    // if (!localStorage.cats) {
+    //   localStorage.cats = JSON.stringify([]);
+    // }
+  },
+
   cats: [
     {
       name: "Cat 1",
@@ -37,6 +43,11 @@ const Model = {
 };
 
 const View = {
+  init: function () {
+    const cats = Octopus.getCats();
+    View.listCats(cats);
+  },
+
   listCats: function (cats) {
     cats.forEach((cat) => {
       const catName = cat.name ?? "Cat";
@@ -93,4 +104,15 @@ const View = {
   },
 };
 
-View.listCats(Model.cats);
+const Octopus = {
+  init: function () {
+    Model.init();
+    View.init();
+  },
+
+  getCats: function () {
+    return Model.cats;
+  },
+};
+
+Octopus.init();
