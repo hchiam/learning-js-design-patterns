@@ -29,3 +29,11 @@ Leverage understanding of other frameworks to make educated guesses of how thing
 ## Requirements change all the time in response to improvements or new info
 
 That's why it's good to write organized and extensible code.
+
+## MV\*
+
+Model <---> "Octopus" <---> View
+
+The "Octopus" connects the model and view, but also lets you easily modify the code of the model and view independently, without having to modify all the code at once.
+
+Example: <https://github.com/udacity/ud989-retain>
