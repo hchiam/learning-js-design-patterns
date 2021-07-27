@@ -36,4 +36,8 @@ Model <---> "Octopus" <---> View
 
 The "Octopus" connects the model and view, but also lets you easily modify the code of the model and view independently, without having to modify all the code at once.
 
+Model = data
+
+View = UI
+
 Example: <https://github.com/udacity/ud989-retain>
